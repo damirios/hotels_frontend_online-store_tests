@@ -14,7 +14,7 @@ export function AdminPageHeader(props: {onAdminMain: boolean}) {
                         </li>
                         {props.onAdminMain ? null : <li><Link to="/admin-page" >Админ-панель</Link></li>}
                         <li className="to-right">
-                            <Link to="/" >Вернуться в магазин</Link>
+                            <Link data-testid='main-page-link' to="/" >Вернуться в магазин</Link>
                         </li>
                     </ul>
                 </div>

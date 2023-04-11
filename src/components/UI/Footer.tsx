@@ -19,7 +19,7 @@ export function Footer() {
 	}
 
 	return (
-		<footer className="footer">
+		<footer className="footer" data-testid="footer">
 			<div className="container">
 				<div className="footer__row">
 					<div className="footer__subscribe-logo">

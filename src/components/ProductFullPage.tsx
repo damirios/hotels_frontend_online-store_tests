@@ -17,7 +17,10 @@ export function ProductFullPage() {
     const [width, height] = useWindowSize();
 
     useEffect(() => {
-        window.scrollTo(0, 0);
+        const app = document.querySelector('.App');
+        if (app) {
+            app.scrollTo({behavior: 'smooth', top: 0});
+        }
     }, [pathname]);
 
     const [isDescriptionOpen, setIsDescriptionOpen] = useState(false);
@@ -61,7 +64,7 @@ export function ProductFullPage() {
     let sizeIconURL = `./images/icons/size_${product?.sizeType}.svg`; // volume or weight
     if (product) {
         return (
-            <div>
+            <div data-testid='full-product-page'>
                 <Breadcrumbs page='product' productName={product.title + ' ' + product.description} />
                 <div className="product-page">
                     <div className="container">

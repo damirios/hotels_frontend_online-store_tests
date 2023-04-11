@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTypedDispatch } from "../hooks/useTypedDispatch";
 import { useTypedSelector } from "../hooks/useTypedSelector";
@@ -14,6 +14,13 @@ export function Pagination() {
     
     const numberOfPages = Math.ceil(products.listToShow.length / pagination.visibleProductsNumber);
     const keys = Array.from(Array(numberOfPages).keys());
+
+    useEffect(() => {
+        const app = document.querySelector('.App');
+        if (app) {
+            app.scrollTo({behavior: 'smooth', top: 0});
+        }
+    }, [pagination]);
     
     function handlePrevClick() {
         if (currentPage !== 1) {

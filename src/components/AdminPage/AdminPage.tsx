@@ -10,7 +10,7 @@ export function AdminPage() {
     const allProducts: ProductType[] = useTypedSelector(state => state.products.list);
     
     return (
-        <div className="admin-page">
+        <div className="admin-page" data-testid='admin-page'>
             <AdminPageHeader onAdminMain={true} />
             <AdminPageContent allProducts={allProducts} />
             <AdminPageFooter />

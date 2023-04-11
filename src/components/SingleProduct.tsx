@@ -36,7 +36,7 @@ export function SingleProduct(props: {product: ProductType}) {
                     <img src={sizeIconURL} alt='size icon' />
                     <p>{product.size} {product.sizeType === sizeTypes.volume ? 'мл' : 'г'}</p>
                 </div>
-                <Link to={`/products/${product.barcode}`} className="single-product__title">
+                <Link data-testid="full-product-link" to={`/products/${product.barcode}`} className="single-product__title">
                     <span>{product.title}.</span> {product.description}
                 </Link>
                 <div className="single-product__caretypes">

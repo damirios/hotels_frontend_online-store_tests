@@ -14,7 +14,7 @@ export function List(props: {class?: string, list: string[], singleClass?: strin
                     );
                 })}
                 <li className={`${props.class}__item`} >
-                    <Link className={`${props.class}__link`} to='/admin-page'>Панель админа</Link>
+                    <Link data-testid='admin-page-link' className={`${props.class}__link`} to='/admin-page'>Панель админа</Link>
                 </li>
             </ul>
         </div>

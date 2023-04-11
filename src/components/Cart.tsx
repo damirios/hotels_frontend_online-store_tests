@@ -16,7 +16,10 @@ export function Cart() {
     function handleCloseThanks() {
         setShowThanks(false);
         dispatch(removeAllProductsFromCart());
-        window.scrollTo(0, 0);
+        const app = document.querySelector('.App');
+        if (app) {
+            app.scrollTo(0, 0);
+        }
     }
 
     function handleCheckoutClick() {

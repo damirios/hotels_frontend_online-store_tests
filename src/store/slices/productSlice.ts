@@ -40,11 +40,19 @@ const productsSlice = createSlice({
 			state.pageList = state.list.slice(firstProductIndex, lastProductIndex);
 		},
 		removeProduct(state, action) {
-			const index = state.list.findIndex(el => el.barcode === action.payload);
-			state.list.splice(index, 1);
+			const pageListLen = state.pageList.length;
+			
+			state.list = state.list.filter(el => el.barcode !== action.payload);
+			state.listToShow = state.listToShow.filter(el => el.barcode !== action.payload);
+			state.pageList = state.listToShow.slice(0, pageListLen);
 		},
 		updateProducts(state) {
-			state.list = getProductsFromLocalStorage();
+			const pageListLen = state.pageList.length;
+			const newList = getProductsFromLocalStorage();
+
+			state.list = [...newList];
+			state.listToShow = [...newList];
+			state.pageList = [...newList].slice(0, pageListLen);
 		}
 	},
 	extraReducers: (builder) => {

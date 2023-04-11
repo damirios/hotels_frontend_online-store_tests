@@ -86,7 +86,7 @@ export function Content(props: {breadcrumbs?: string}) {
 	}
 
 	return(
-		<main className="content">
+		<main className="content" data-testid='content'>
 			<Breadcrumbs page='catalog' />
 			<div className="content__catalog catalog-content">
 				<div className="container">

@@ -6,7 +6,7 @@ import { MailLink } from "./UI/MailLink";
 import { useTypedSelector } from "../hooks/useTypedSelector";
 import { useTypedDispatch } from "../hooks/useTypedDispatch";
 import { closeDropDown } from "../store/slices/dropDownSlice";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useWindowSize } from "../hooks/useWindowSize";
 import { Support } from "./UI/Support";
 
@@ -34,13 +34,8 @@ export function Header() {
 		}
 	}
 
-	const { pathname } = useLocation();
-	if (pathname.includes('/admin-page')) {
-		return null;
-	}
-
 	return (
-		<header className="header">
+		<header className="header" data-testid="header">
 			<div className="header__top top-header">
 				<div className="container">
 					<div className="top-header__row">

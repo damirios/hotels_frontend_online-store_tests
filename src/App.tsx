@@ -1,33 +1,27 @@
-import { HashRouter as Router, Routes, Route } from 'react-router-dom'; 
+import { useLocation } from 'react-router-dom'; 
 
-import { Content } from './components/Content';
 import { Footer } from './components/UI/Footer';
 import { Header } from './components/Header';
-import { ProductFullPage } from './components/ProductFullPage';
 
 import './style/css/style.css';
-import { Cart } from './components/Cart';
-import { AdminPage } from './components/AdminPage/AdminPage';
-import { AdminPageChangeInfo } from './components/AdminPage/AdminPageChangeInfo';
-import { AdminPageCreate } from './components/AdminPage/AdminPageCreate';
-import { NotFoundPage } from './components/UI/NotFoundPage';
+import { AppRouter } from './router/AppRouter';
+import { useState } from 'react';
 
 function App() {
+	const [hideHeaderAndFooter, setHideHeaderAndFooter] = useState(false);
+
+	const { pathname } = useLocation();
+	if (pathname.includes('/admin-page') && !hideHeaderAndFooter) {
+		setHideHeaderAndFooter(true);
+	} else if (!pathname.includes('/admin-page') && hideHeaderAndFooter) {
+		setHideHeaderAndFooter(false);
+	}
+
 	return (
-		<div className="App">
-			<Router>
-				<Header />
-				<Routes>
-					<Route path='/' element={<Content />} />
-					<Route path='/cart' element={<Cart />} />
-					<Route path='/products/:id' element={<ProductFullPage />} />
-					<Route path='/admin-page' element={<AdminPage />} />
-					<Route path='/admin-page/edit-product/:id' element={<AdminPageChangeInfo />} />
-					<Route path='/admin-page-create' element={<AdminPageCreate />} />
-					<Route path='/*' element={<NotFoundPage/>} />
-				</Routes>
-				<Footer />
-			</Router>
+		<div className="App" data-testid='app'>
+			{!hideHeaderAndFooter && <Header />}
+			<AppRouter />
+			{!hideHeaderAndFooter && <Footer />}
 		</div>
 	);
 }
