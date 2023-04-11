@@ -30,10 +30,8 @@ const cartSlice = createSlice({
             const { barcode, count } = action.payload;
             const index = state.productsInCart.findIndex(el => el.product.barcode === barcode);
             if (index !== -1 && count > 0) {
-                console.log('change: ', count);
                 state.productsInCart[index].quantity = count;
             }
-            state = state;
         }
     }
 });
